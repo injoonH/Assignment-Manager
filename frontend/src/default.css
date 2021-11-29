@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body,
+input,
+textarea {
+    font-family: "Baloo Da 2", sans-serif;
+    font-weight: var(--fw-regular);
+}
+
+input,
+textarea {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+textarea {
+    resize: none;
+}
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

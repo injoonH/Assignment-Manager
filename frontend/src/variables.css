@@ -1,0 +1,15 @@
+:root {
+    --clr-text: #000;
+    --clr-calendar-body: #fff;
+    --clr-calendar-pn-text: #999;
+    --clr-calendar-day-line: #000;
+    --clr-calendar-shadow1: rgba(50, 50, 93, 0.25);
+    --clr-calendar-shadow2: rgba(0, 0, 0, 0.3);
+
+    --fw-regular: 600;
+    --fw-bold: 800;
+}
+
+.darkmode {
+    --clr-text: #fff;
+}
