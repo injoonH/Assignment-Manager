@@ -8,6 +8,7 @@ input,
 textarea {
     font-family: "Baloo Da 2", sans-serif;
     font-weight: var(--fw-regular);
+    color: var(--clr-text);
 }
 
 input,
