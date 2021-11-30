@@ -6,11 +6,13 @@
     --clr-calendar-day-line: #000;
     --clr-calendar-item-border: #ccc;
     --clr-calendar-cur-date: #ffe986;
+    --clr-calendar-cur-date-text: #000;
     --clr-calendar-shadow1: rgba(50, 50, 93, 0.25);
     --clr-calendar-shadow2: rgba(0, 0, 0, 0.3);
     --clr-calendar-sunday: #ff3399;
     --clr-calendar-saturday: #0099ff;
     
+    --clr-todolist-body: #fff;
     --clr-todolist-shadow1: rgba(50, 50, 93, 0.25);
     --clr-todolist-shadow2: rgba(0, 0, 0, 0.3);
     --clr-todolist-form-palette: #fff;
@@ -37,8 +39,26 @@
     --clr-calendar-not-cur-month-text: #b4b4b4;
     --clr-calendar-day-line: #fff;
     --clr-calendar-item-border: #ccc;
+    --clr-calendar-cur-date: #eec81e;
+    --clr-calendar-cur-date-text: #000;
     --clr-calendar-shadow1: rgba(197, 197, 233, 0.541);
     --clr-calendar-shadow2: rgba(255, 255, 255, 0.5);
     --clr-calendar-sunday: #ff6cb5;
     --clr-calendar-saturday: #55bbff;
+
+    --clr-todolist-body: #2e2f30;
+    --clr-todolist-shadow1: rgba(197, 197, 233, 0.541);
+    --clr-todolist-shadow2: rgba(255, 255, 255, 0.5);
+    --clr-todolist-form-palette: #2e2f30;;
+    --clr-todolist-form-palette-border: #b3b3b3;
+    --clr-todolist-form-placeholder-text: #b3b3b3;
+    --clr-todolist-form-placeholder-border: #b3b3b3;
+    --clr-todolist-form-submit: #444;
+    --clr-todolist-form-submit-hover: #555;
+
+    --clr-todolist-item-border: #ccc;
+    --clr-todolist-item-button-text: #ccc;
+    --clr-todolist-item-button-text-hover: #555;
+    --clr-todolist-item-button-background-hover: #ddd;
+    --clr-todolist-item-text-done: #838383;
 }

@@ -3,7 +3,6 @@ import db from '../db.js';
 const router = Router();
 
 router.get('/:date', (req, res) => {
-    console.log('Hello from todo router');
     db.getAll(req.params.date, items => {
         res.json(items);
     });

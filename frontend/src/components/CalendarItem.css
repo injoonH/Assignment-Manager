@@ -19,3 +19,7 @@
 .calendar__body__item__date-cur {
     background-color: var(--clr-calendar-cur-date);
 }
+
+.calendar__body__item__date-cur > .calendar__body__item__date {
+    color: var(--clr-calendar-cur-date-text);
+}

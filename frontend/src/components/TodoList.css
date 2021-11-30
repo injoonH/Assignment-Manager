@@ -6,6 +6,7 @@
     padding: 1rem;
     border-radius: 1rem;
     box-shadow: var(--clr-todolist-shadow1) 0 6px 12px -2px, var(--clr-todolist-shadow2) 0 3px 7px -3px;
+    background-color: var(--clr-todolist-body);
 }
 
 .todolist__container {
