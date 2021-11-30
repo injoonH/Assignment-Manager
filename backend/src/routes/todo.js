@@ -2,9 +2,9 @@ import { Router } from 'express';
 import db from '../db.js';
 const router = Router();
 
-router.get('/', (req, res) => {
+router.get('/:date', (req, res) => {
     console.log('Hello from todo router');
-    db.getAll((items) => {
+    db.getAll(req.params.date, items => {
         res.json(items);
     });
 });

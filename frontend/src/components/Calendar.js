@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { monthName } from './Helper';
 import CalendarItem from './CalendarItem';
 import './Calendar.css';
 
-export default function Calendar() {
+export default function Calendar({setTodoItems}) {
     const today = new Date();
     const [date, setDate] = useState(today.getDate());
     const [month, setMonth] = useState(today.getMonth());
     const [year, setYear] = useState(today.getFullYear());
-    const monthName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
     const changeDate = (y, m, d) => {
         setYear(y);
         setMonth(m);
         setDate(d);
+        axios.get(`/api/todo/${y} ${monthName[m]} ${d}`)
+        .then(res => {
+            setTodoItems(res.data);
+        });
     }
 
     const getInfo = (y, m) => {

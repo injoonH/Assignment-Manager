@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
 
 const todoSchema = new mongoose.Schema({
-    date: String,
     color: String,
+    time: String,
     content: String,
+    date: String,
     done: { type: Boolean, default: false }
 }, {timestamps: true});
 

@@ -1,7 +1,7 @@
 import TodoModel from './models/todo.js';
 
-function getAll(callback) {
-    TodoModel.find({}, (err, res) => {
+function getAll(date, callback) {
+    TodoModel.find({ date: date }, (err, res) => {
         if (err) {
             console.log('Error:', err);
             callback([]);

@@ -17,8 +17,8 @@
     border-radius: 0.5rem;
 }
 
-.todolist__container__item__date,
-.todolist__container__item__date-done {
+.todolist__container__item__time,
+.todolist__container__item__time-done {
     text-align: center;
 }
 
@@ -29,7 +29,7 @@
 }
 
 .todolist__container__item__content-done,
-.todolist__container__item__date-done {
+.todolist__container__item__time-done {
     color: var(--clr-todolist-item-text-done);
 }
 

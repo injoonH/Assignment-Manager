@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
+import { getCurDate } from './Helper';
 import TodoItem from './TodoItem';
 import './TodoList.css';
 
-export default function TodoList() {
-    const [todoItems, setTodoItems] = useState([]);
-
+export default function TodoList({todoItems, setTodoItems}) {
     useEffect(() => {
-        axios.get('/api/todo')
+        axios.get(`/api/todo/${getCurDate()}`)
         .then(res => {
             setTodoItems(res.data);
         });
@@ -16,12 +15,12 @@ export default function TodoList() {
     const togglePalette = () => {
         const palette = document.getElementsByClassName('todolist__form__palette')[0];
         palette.classList.toggle('invisible');
-    }
+    };
 
     const changeColor = (el) => {
         const curColor = document.getElementsByClassName('todolist__form__color')[0];
         curColor.style.backgroundColor = el.target.style.backgroundColor;
-    }
+    };
 
     const addTodo = () => {
         const color = document.getElementsByClassName('todolist__form__color')[0].style.backgroundColor;
@@ -30,24 +29,21 @@ export default function TodoList() {
         if (time === '' || text === '') return;
         document.getElementsByClassName('todolist__form__time')[0].value = '';
         document.getElementsByClassName('todolist__form__text')[0].innerText = '';
-        console.log('Time:', time);
-        console.log('Text:', text);
-
         axios.post('/api/todo', {
             color: color,
-            date: time,
-            content: text
+            time: time,
+            content: text,
+            date: getCurDate()
         })
-        .then(() => axios.get('/api/todo'))
+        .then(() => axios.get(`/api/todo/${getCurDate()}`))
         .then(res => {
             setTodoItems(res.data);
         });
-    }
+    };
 
     const toggleDone = (item) => {
-        console.log('item', item);
         axios.put(`/api/todo/${item._id}/${item.done}/toggledone`)
-        .then(() => axios.get('/api/todo'))
+        .then(() => axios.get(`/api/todo/${getCurDate()}`))
         .then(res => {
             setTodoItems(res.data);
         });
@@ -55,16 +51,16 @@ export default function TodoList() {
 
     const removeTodo = (item) => {
         axios.delete(`/api/todo/${item._id}`)
-        .then(() => axios.get('/api/todo'))
+        .then(() => axios.get(`/api/todo/${getCurDate()}`))
         .then(res => {
             setTodoItems(res.data);
         });
     };
 
-    const todoItemElements = todoItems.sort((a, b) => a.date.localeCompare(b.date)).map(el => (
+    const todoItemElements = todoItems.sort((a, b) => a.time.localeCompare(b.time)).map(el => (
         <TodoItem
             key={el.id}
-            date={el.date}
+            time={el.time}
             color={el.color}
             content={el.content}
             done={el.done}
