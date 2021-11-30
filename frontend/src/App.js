@@ -8,8 +8,8 @@ function App() {
 
     return (
         <div id="main">
-            <Calendar key="calendar" setTodoItems={setTodoItems} />
-            <TodoList key="todolist" todoItems={todoItems} setTodoItems={setTodoItems} />
+            <Calendar setTodoItems={setTodoItems} />
+            <TodoList todoItems={todoItems} setTodoItems={setTodoItems} />
         </div>
     );
 }

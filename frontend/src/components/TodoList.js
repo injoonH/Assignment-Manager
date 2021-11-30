@@ -59,7 +59,7 @@ export default function TodoList({todoItems, setTodoItems}) {
 
     const todoItemElements = todoItems.sort((a, b) => a.time.localeCompare(b.time)).map(el => (
         <TodoItem
-            key={el.id}
+            key={el._id}
             time={el.time}
             color={el.color}
             content={el.content}

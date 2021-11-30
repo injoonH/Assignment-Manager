@@ -1,14 +1,14 @@
 import React from 'react';
 import './CalendarItem.css';
 
-export default function CalendarItem(year, month, date, isCurMonth, curDate, changeDate) {
+export default function CalendarItem(props) {
     let dateClass = 'calendar__body__item__date', itemClass = 'calendar__body__item';
-    if (!isCurMonth) dateClass += ' calendar__body__item__date-not-cur-month';
-    if (date === curDate) itemClass += ' calendar__body__item__date-cur';
+    if (!props.isCurMonth) dateClass += ' calendar__body__item__date-not-cur-month';
+    if (props.date === props.curDate) itemClass += ' calendar__body__item__date-cur';
 
     return (
-        <div className={itemClass} onClick={() => {changeDate(year, month, date)}}>
-            <span className={dateClass}>{date}</span>
+        <div className={itemClass} onClick={() => {props.changeDate(props.year, props.month, props.date)}}>
+            <span className={dateClass}>{props.date}</span>
         </div>
     )
 }

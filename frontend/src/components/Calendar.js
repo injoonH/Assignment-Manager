@@ -42,12 +42,37 @@ export default function Calendar({setTodoItems}) {
         const nextDates = [...Array(42 - curInfo.date - prevDates.length).keys()].map(e => e + 1);
 
         const result = [];
-        for (let i = 0; i < prevDates.length; ++i)
-            result.push(CalendarItem(prevInfo.year, prevInfo.month, prevDates[i], false, -1, changeDate));
-        for (let i = 0; i < curDates.length; ++i)
-            result.push(CalendarItem(curInfo.year, curInfo.month, curDates[i], true, date, changeDate));
-        for (let i = 0; i < nextDates.length; ++i)
-            result.push(CalendarItem(nextInfo.year, nextInfo.month, nextDates[i], false, -1, changeDate));
+        let i, key = 0;
+        for (i = 0; i < prevDates.length; ++i, ++key)
+            result.push(<CalendarItem
+                key={key}
+                year={prevInfo.year}
+                month={prevInfo.month}
+                date={prevDates[i]}
+                isCurMonth={false}
+                curDate={-1}
+                changeDate={changeDate}
+            />);
+        for (i = 0; i < curDates.length; ++i, ++key)
+            result.push(<CalendarItem
+                key={key}
+                year={curInfo.year}
+                month={curInfo.month}
+                date={curDates[i]}
+                isCurMonth={true}
+                curDate={date}
+                changeDate={changeDate}
+            />);
+        for (i = 0; i < nextDates.length; ++i, ++key)
+            result.push(<CalendarItem
+                key={key}
+                year={nextInfo.year}
+                month={nextInfo.month}
+                date={nextDates[i]}
+                isCurMonth={false}
+                curDate={-1}
+                changeDate={changeDate}
+            />);
 
         return result;
     };
