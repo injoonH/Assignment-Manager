@@ -1,6 +1,6 @@
 .todolist__container__item {
     display: grid;
-    grid-template-columns: 1.5rem 4.5rem auto 2rem 2rem;
+    grid-template-columns: 1.5rem 4.5rem calc(100% - 10rem) 2rem 2rem;
     align-items: center;
     padding-left: 0.5rem;
     border-radius: 0.5rem;
