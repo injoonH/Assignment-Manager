@@ -10,9 +10,9 @@ export default function Calendar() {
     const monthName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
     const changeDate = (y, m, d) => {
-        setDate(d);
-        setMonth(m);
         setYear(y);
+        setMonth(m);
+        setDate(d);
     }
 
     const getInfo = (y, m) => {

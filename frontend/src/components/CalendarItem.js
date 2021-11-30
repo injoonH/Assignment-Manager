@@ -6,10 +6,8 @@ export default function CalendarItem(year, month, date, isCurMonth, curDate, cha
     if (!isCurMonth) dateClass += ' calendar__body__item__date-not-cur-month';
     if (date === curDate) itemClass += ' calendar__body__item__date-cur';
 
-    const calendarId = `calendar-${year}-${month}-${date}`;
-
     return (
-        <div id={calendarId} className={itemClass} onClick={() => {changeDate(year, month, date)}}>
+        <div className={itemClass} onClick={() => {changeDate(year, month, date)}}>
             <span className={dateClass}>{date}</span>
         </div>
     )

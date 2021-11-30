@@ -1,3 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@600;800&family=Noto+Sans+KR&display=swap');
 @import "variables.css";
 @import "default.css";
+
+.invisible {
+    display: none;
+}

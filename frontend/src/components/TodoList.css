@@ -18,6 +18,7 @@
 }
 
 .todolist__form {
+    position: relative;
     display: flex;
 }
 
@@ -25,9 +26,36 @@
     font-size: 1.25rem;
 }
 
+.todolist__form__palette {
+    position: absolute;
+    top: -4rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.25rem;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    background-color: var(--clr-todolist-form-palette);
+    border: 2px var(--clr-todolist-form-palette-border) solid;
+}
+.todolist__form__color-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todolist__form__palette__color,
+.todolist__form__color {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
 .todolist__form__time {
     width: 20%;
     cursor: pointer;
+    margin-left: 1%;
 }
 
 .todolist__form__text {
