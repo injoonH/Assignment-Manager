@@ -69,13 +69,13 @@ export default function Calendar() {
                 <i className="fas fa-caret-right calendar__header__arrow" onClick={toNextMonth}></i>
             </div>
             <div className="calendar__body">
-                <div className="calendar__body__day" style={{color: "#ff3399"}}><span>Sun</span></div>
+                <div className="calendar__body__day"><span className="calendar__body__day__sunday">Sun</span></div>
                 <div className="calendar__body__day"><span>Mon</span></div>
                 <div className="calendar__body__day"><span>Tue</span></div>
                 <div className="calendar__body__day"><span>Wed</span></div>
                 <div className="calendar__body__day"><span>Thu</span></div>
                 <div className="calendar__body__day"><span>Fri</span></div>
-                <div className="calendar__body__day" style={{color: "#0099ff"}}><span>Sat</span></div>
+                <div className="calendar__body__day"><span className="calendar__body__day__saturday">Sat</span></div>
                 {getDates(year, month)}
             </div>
         </div>

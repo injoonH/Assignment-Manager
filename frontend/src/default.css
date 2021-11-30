@@ -1,12 +1,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
-}
-
-body,
-input,
-textarea {
-    font-family: "Baloo Da 2", sans-serif;
+    font-family: "Baloo Da 2", "Noto Sans KR", sans-serif;
     font-weight: var(--fw-regular);
     color: var(--clr-text);
 }
