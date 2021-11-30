@@ -1,11 +1,16 @@
 import React from 'react';
 import './CalendarItem.css';
 
-export default function CalendarItem(year, month, date, isCur) {
-    const dayType = 'calendar__body__item__date ' +  (isCur ? 'day-cur' : 'day-not-cur');
+export default function CalendarItem(year, month, date, isCurMonth, curDate, changeDate) {
+    let dateClass = 'calendar__body__item__date', itemClass = 'calendar__body__item';
+    if (!isCurMonth) dateClass += ' calendar__body__item__date-not-cur-month';
+    if (date === curDate) itemClass += ' calendar__body__item__date-cur';
+
+    const calendarId = `calendar-${year}-${month}-${date}`;
+
     return (
-        <div className="calendar__body__item">
-            <span className={dayType}>{date}</span>
+        <div id={calendarId} className={itemClass} onClick={() => {changeDate(year, month, date)}}>
+            <span className={dateClass}>{date}</span>
         </div>
     )
 }

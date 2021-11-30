@@ -3,34 +3,32 @@ import CalendarItem from './CalendarItem';
 import './Calendar.css';
 
 export default function Calendar() {
-    const date = new Date();
-    const [year, setYear] = useState(date.getFullYear());
-    const [month, setMonth] = useState(date.getMonth());
+    const today = new Date();
+    const [date, setDate] = useState(today.getDate());
+    const [month, setMonth] = useState(today.getMonth());
+    const [year, setYear] = useState(today.getFullYear());
     const monthName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-    const getDates = (y, m) => {
-        const prev = new Date(y, m, 0);
-        const cur = new Date(y, m + 1, 0);
-        const next = new Date(y, m + 2, 0);
+    const changeDate = (y, m, d) => {
+        setDate(d);
+        setMonth(m);
+        setYear(y);
+    }
 
-        const prevInfo = {
-            year: prev.getFullYear(),
-            month: prev.getMonth(),
-            date: prev.getDate(),
-            day: prev.getDay()
+    const getInfo = (y, m) => {
+        const d = new Date(y, m, 0);
+        return {
+            year: d.getFullYear(),
+            month: d.getMonth(),
+            date: d.getDate(),
+            day: d.getDay()
         };
-        const curInfo = {
-            year: cur.getFullYear(),
-            month: cur.getMonth(),
-            date: cur.getDate(),
-            day: cur.getDay()
-        };
-        const nextInfo = {
-            year: next.getFullYear(),
-            month: next.getMonth(),
-            date: next.getDate(),
-            day: next.getDay()
-        };
+    }
+    
+    const getDates = (y, m) => {
+        const prevInfo = getInfo(y, m);
+        const curInfo = getInfo(y, m + 1);
+        const nextInfo = getInfo(y, m + 2);
 
         let prevDates;
         if (prevInfo.day !== 6) prevDates = [...Array(prevInfo.day + 1).keys()].map(e => e + prevInfo.date - prevInfo.day);
@@ -40,25 +38,23 @@ export default function Calendar() {
 
         const result = [];
         for (let i = 0; i < prevDates.length; ++i)
-            result.push(CalendarItem(prevInfo.year, prevInfo.month, prevDates[i], false));
+            result.push(CalendarItem(prevInfo.year, prevInfo.month, prevDates[i], false, -1, changeDate));
         for (let i = 0; i < curDates.length; ++i)
-            result.push(CalendarItem(curInfo.year, curInfo.month, curDates[i], true));
+            result.push(CalendarItem(curInfo.year, curInfo.month, curDates[i], true, date, changeDate));
         for (let i = 0; i < nextDates.length; ++i)
-            result.push(CalendarItem(nextInfo.year, nextInfo.month, nextDates[i], false));
+            result.push(CalendarItem(nextInfo.year, nextInfo.month, nextDates[i], false, -1, changeDate));
 
         return result;
     };
 
     const toPrevMonth = () => {
-        const prev = new Date(year, month, 0);
-        setYear(prev.getFullYear());
-        setMonth(prev.getMonth());
+        const prevInfo = getInfo(year, month);
+        changeDate(prevInfo.year, prevInfo.month, prevInfo.date);
     };
 
     const toNextMonth = () => {
-        const next = new Date(year, month + 2, 0);
-        setYear(next.getFullYear());
-        setMonth(next.getMonth());
+        const nextInfo = getInfo(year, month + 2);
+        changeDate(nextInfo.year, nextInfo.month, 1);
     };
 
     return (

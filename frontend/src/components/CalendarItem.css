@@ -1,3 +1,21 @@
-.day-not-cur {
-    color: var(--clr-calendar-pn-text);
+.calendar__body__item {
+    border: 1px transparent solid;
+}
+
+.calendar__body__item:hover {
+    transition: border-color .1s ease;
+    border: 1px var(--clr-calendar-item-border) solid;
+}
+
+.calendar__body__item__date {
+    font-size: 1.25rem;
+    margin: 0.5rem;
+}
+
+.calendar__body__item__date-not-cur-month {
+    color: var(--clr-calendar-not-cur-month-text);
+}
+
+.calendar__body__item__date-cur {
+    background-color: var(--clr-calendar-cur-date);
 }

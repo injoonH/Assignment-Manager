@@ -34,7 +34,7 @@
     grid-template-rows: 2.25rem repeat(6, minmax(5rem, auto));
 }
 
-.calendar__body > * {
+.calendar__body > *:not(.calendar__body__item__date-cur) {
     background-color: var(--clr-calendar-body);
 }
 
@@ -55,18 +55,4 @@
 
 .calendar__body__day__saturday {
     color: var(--clr-calendar-saturday);
-}
-
-.calendar__body__item {
-    border: 1px transparent solid;
-}
-
-.calendar__body__item:hover {
-    transition: border-color .1s ease;
-    border: 1px var(--clr-calendar-item-border) solid;
-}
-
-.calendar__body__item__date {
-    font-size: 1.25rem;
-    margin: 0.5rem;
 }
