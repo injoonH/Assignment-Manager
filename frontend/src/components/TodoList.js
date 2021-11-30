@@ -61,7 +61,7 @@ export default function TodoList() {
         });
     };
 
-    const todoItemElements = todoItems.map(el => (
+    const todoItemElements = todoItems.sort((a, b) => a.date.localeCompare(b.date)).map(el => (
         <TodoItem
             key={el.id}
             date={el.date}
