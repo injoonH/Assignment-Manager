@@ -5,7 +5,8 @@ import todoRouter from './routes/todo.js';
 const app = express();
 const port = 8080;
 
-mongoose.connect('mongodb://localhost:27017/todo', {
+// mongoose.connect('mongodb://localhost:27017/todo', {
+mongoose.connect('mongodb://root:ehdgoanfrhkqorentksdlakfmrhekfgehfhr@ssal.sparcs.org:35000/todo?authSource=admin', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });

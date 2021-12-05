@@ -19,7 +19,6 @@ function add(req, callback) {
 }
 
 function toggleDone(id, done, callback) {
-    console.log('Hello from toggle');
     TodoModel.updateOne({_id: id}, {done: !done}, () => {
         callback();
     });
