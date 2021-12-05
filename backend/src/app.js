@@ -4,6 +4,7 @@ import cors from 'cors';
 import todoRouter from './routes/todo.js';
 
 const app = express();
+const port = 8080;
 
 const whitelist = ['http://ssal.sparcs.org:32000',
                    'http://ssal.sparcs.org:34000',
@@ -39,4 +40,8 @@ app.use('/todo', todoRouter);
 
 app.get('/', (req, res) => {
     res.status(418).send('Hi');
+});
+
+app.listen(port, '0.0.0.0', () => {
+    console.log(`Listening on port ${port}`);
 });
