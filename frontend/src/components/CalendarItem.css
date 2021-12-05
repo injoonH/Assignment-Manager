@@ -1,5 +1,6 @@
 .calendar__body__item {
     border: 1px transparent solid;
+    position: relative;
 }
 
 .calendar__body__item:hover {
@@ -10,6 +11,17 @@
 .calendar__body__item__date {
     font-size: 1.25rem;
     margin: 0.5rem;
+    pointer-events: none;
+}
+
+.calendar__body__item__count {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.25rem;
+    color: var(--clr-calendar-cnt-text);
+    pointer-events: none;
 }
 
 .calendar__body__item__date-not-cur-month {
@@ -22,4 +34,8 @@
 
 .calendar__body__item__date-cur > .calendar__body__item__date {
     color: var(--clr-calendar-cur-date-text);
+}
+
+.calendar__body__item__date-cur > .calendar__body__item__count {
+    color: var(--clr-calendar-cur-cnt-text);
 }

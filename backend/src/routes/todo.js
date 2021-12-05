@@ -2,8 +2,20 @@ import { Router } from 'express';
 import db from '../db.js';
 const router = Router();
 
-router.get('/:date', (req, res) => {
+router.get('/all/:date', (req, res) => {
     db.getAll(req.params.date, items => {
+        res.json(items);
+    });
+});
+
+router.get('/cnt/:date', (req, res) => {
+    db.getCount(req.params.date, items => {
+        res.json(items);
+    });
+});
+
+router.get('/cntdone/:date', (req, res) => {
+    db.getDoneCount(req.params.date, items => {
         res.json(items);
     });
 });

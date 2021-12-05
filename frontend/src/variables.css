@@ -7,6 +7,8 @@
     --clr-calendar-item-border: #ccc;
     --clr-calendar-cur-date: #ffe986;
     --clr-calendar-cur-date-text: #000;
+    --clr-calendar-cnt-text: #ccc;
+    --clr-calendar-cur-cnt-text: #000;
     --clr-calendar-shadow1: rgba(50, 50, 93, 0.25);
     --clr-calendar-shadow2: rgba(0, 0, 0, 0.3);
     --clr-calendar-sunday: #ff3399;
@@ -41,6 +43,8 @@
     --clr-calendar-item-border: #ccc;
     --clr-calendar-cur-date: #eec81e;
     --clr-calendar-cur-date-text: #000;
+    --clr-calendar-cnt-text: #aaa;
+    --clr-calendar-cur-cnt-text: #000;
     --clr-calendar-shadow1: rgba(197, 197, 233, 0.541);
     --clr-calendar-shadow2: rgba(255, 255, 255, 0.5);
     --clr-calendar-sunday: #ff6cb5;

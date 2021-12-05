@@ -11,6 +11,18 @@ function getAll(date, callback) {
     });
 }
 
+function getCount(date, callback) {
+    TodoModel.countDocuments({ date: date }, (err, cnt) => {
+        callback(cnt);
+    });
+}
+
+function getDoneCount(date, callback) {
+    TodoModel.countDocuments({ date: date, done: true }, (err, cnt) => {
+        callback(cnt);
+    });
+}
+
 function add(req, callback) {
     const newTodoItem = new TodoModel(req);
     newTodoItem.save((err, res) => {
@@ -32,6 +44,8 @@ function removeTodo(id, callback) {
 
 export default {
     getAll,
+    getCount,
+    getDoneCount,
     add,
     removeTodo,
     toggleDone

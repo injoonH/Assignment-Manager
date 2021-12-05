@@ -4,17 +4,18 @@ import { backendAddress, monthName } from './Helper';
 import CalendarItem from './CalendarItem';
 import './Calendar.css';
 
-export default function Calendar({setTodoItems}) {
+function Calendar({setTodoItems}) {
     const today = new Date();
     const [date, setDate] = useState(today.getDate());
     const [month, setMonth] = useState(today.getMonth());
     const [year, setYear] = useState(today.getFullYear());
 
     const changeDate = (y, m, d) => {
+        // console.log(`chageDate(${y}, ${m}, ${d})`);
         setYear(y);
         setMonth(m);
         setDate(d);
-        axios.get(`${backendAddress}/todo/${y} ${monthName[m]} ${d}`)
+        axios.get(`${backendAddress}/todo/all/${y}-${monthName[m]}-${d}`)
         .then(res => {
             setTodoItems(res.data);
         });
@@ -29,11 +30,24 @@ export default function Calendar({setTodoItems}) {
             day: d.getDay()
         };
     }
+
+    const getCounts = async (y, m, d) => {
+        const cntApi = `${backendAddress}/todo/cnt/${y}-${monthName[m]}-${d}`;
+        const cntdoneApi = `${backendAddress}/todo/cntdone/${y}-${monthName[m]}-${d}`;
+        try {
+            const cnt = await axios.get(cntApi);
+            const cntDone = await axios.get(cntdoneApi);
+            return {cnt: cnt, cntdone: cntDone};
+        } catch(err) {
+            return null;
+        }
+    };
     
-    const getDates = (y, m) => {
-        const prevInfo = getInfo(y, m);
-        const curInfo = getInfo(y, m + 1);
-        const nextInfo = getInfo(y, m + 2);
+    const getDates = () => {
+        // console.log(`getDates(${year}, ${month})`);
+        const prevInfo = getInfo(year, month);
+        const curInfo = getInfo(year, month + 1);
+        const nextInfo = getInfo(year, month + 2);
 
         let prevDates;
         if (prevInfo.day !== 6) prevDates = [...Array(prevInfo.day + 1).keys()].map(e => e + prevInfo.date - prevInfo.day);
@@ -52,6 +66,7 @@ export default function Calendar({setTodoItems}) {
                 isCurMonth={false}
                 curDate={-1}
                 changeDate={changeDate}
+                getCounts={getCounts}
             />);
         for (i = 0; i < curDates.length; ++i, ++key)
             result.push(<CalendarItem
@@ -62,6 +77,7 @@ export default function Calendar({setTodoItems}) {
                 isCurMonth={true}
                 curDate={date}
                 changeDate={changeDate}
+                getCounts={getCounts}
             />);
         for (i = 0; i < nextDates.length; ++i, ++key)
             result.push(<CalendarItem
@@ -72,6 +88,7 @@ export default function Calendar({setTodoItems}) {
                 isCurMonth={false}
                 curDate={-1}
                 changeDate={changeDate}
+                getCounts={getCounts}
             />);
 
         return result;
@@ -102,8 +119,10 @@ export default function Calendar({setTodoItems}) {
                 <div className="calendar__body__day"><span>Thu</span></div>
                 <div className="calendar__body__day"><span>Fri</span></div>
                 <div className="calendar__body__day"><span className="calendar__body__day__saturday">Sat</span></div>
-                {getDates(year, month)}
+                {getDates()}
             </div>
         </div>
     )
 }
+
+export default React.memo(Calendar);

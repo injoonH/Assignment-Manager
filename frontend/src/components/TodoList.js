@@ -4,9 +4,9 @@ import { backendAddress, getCurDate } from './Helper';
 import TodoItem from './TodoItem';
 import './TodoList.css';
 
-export default function TodoList({todoItems, setTodoItems}) {
+function TodoList({todoItems, setTodoItems}) {
     useEffect(() => {
-        axios.get(`${backendAddress}/todo/${getCurDate()}`)
+        axios.get(`${backendAddress}/todo/all/${getCurDate()}`)
         .then(res => {
             setTodoItems(res.data);
         });
@@ -35,7 +35,7 @@ export default function TodoList({todoItems, setTodoItems}) {
             content: text,
             date: getCurDate()
         })
-        .then(() => axios.get(`${backendAddress}/todo/${getCurDate()}`))
+        .then(() => axios.get(`${backendAddress}/todo/all/${getCurDate()}`))
         .then(res => {
             setTodoItems(res.data);
         });
@@ -43,7 +43,7 @@ export default function TodoList({todoItems, setTodoItems}) {
 
     const toggleDone = (item) => {
         axios.put(`${backendAddress}/todo/${item._id}/${item.done}/toggledone`)
-        .then(() => axios.get(`${backendAddress}/todo/${getCurDate()}`))
+        .then(() => axios.get(`${backendAddress}/todo/all/${getCurDate()}`))
         .then(res => {
             setTodoItems(res.data);
         });
@@ -51,7 +51,7 @@ export default function TodoList({todoItems, setTodoItems}) {
 
     const removeTodo = (item) => {
         axios.delete(`${backendAddress}/todo/${item._id}`)
-        .then(() => axios.get(`${backendAddress}/todo/${getCurDate()}`))
+        .then(() => axios.get(`${backendAddress}/todo/all/${getCurDate()}`))
         .then(res => {
             setTodoItems(res.data);
         });
@@ -93,3 +93,5 @@ export default function TodoList({todoItems, setTodoItems}) {
         </div>
     );
 }
+
+export default React.memo(TodoList);
