@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { monthName } from './Helper';
+import { backendAddress, monthName } from './Helper';
 import CalendarItem from './CalendarItem';
 import './Calendar.css';
 
@@ -14,7 +14,7 @@ export default function Calendar({setTodoItems}) {
         setYear(y);
         setMonth(m);
         setDate(d);
-        axios.get(`/api/todo/${y} ${monthName[m]} ${d}`)
+        axios.get(`${backendAddress}/todo/${y} ${monthName[m]} ${d}`)
         .then(res => {
             setTodoItems(res.data);
         });

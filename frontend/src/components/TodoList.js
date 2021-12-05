@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import { getCurDate } from './Helper';
+import { backendAddress, getCurDate } from './Helper';
 import TodoItem from './TodoItem';
 import './TodoList.css';
 
 export default function TodoList({todoItems, setTodoItems}) {
     useEffect(() => {
-        axios.get(`/api/todo/${getCurDate()}`)
+        axios.get(`${backendAddress}/todo/${getCurDate()}`)
         .then(res => {
             setTodoItems(res.data);
         });
@@ -29,29 +29,29 @@ export default function TodoList({todoItems, setTodoItems}) {
         if (time === '' || text === '') return;
         document.getElementsByClassName('todolist__form__time')[0].value = '';
         document.getElementsByClassName('todolist__form__text')[0].innerText = '';
-        axios.post('/api/todo', {
+        axios.post(`${backendAddress}/todo`, {
             color: color,
             time: time,
             content: text,
             date: getCurDate()
         })
-        .then(() => axios.get(`/api/todo/${getCurDate()}`))
+        .then(() => axios.get(`${backendAddress}/todo/${getCurDate()}`))
         .then(res => {
             setTodoItems(res.data);
         });
     };
 
     const toggleDone = (item) => {
-        axios.put(`/api/todo/${item._id}/${item.done}/toggledone`)
-        .then(() => axios.get(`/api/todo/${getCurDate()}`))
+        axios.put(`${backendAddress}/todo/${item._id}/${item.done}/toggledone`)
+        .then(() => axios.get(`${backendAddress}/todo/${getCurDate()}`))
         .then(res => {
             setTodoItems(res.data);
         });
     };
 
     const removeTodo = (item) => {
-        axios.delete(`/api/todo/${item._id}`)
-        .then(() => axios.get(`/api/todo/${getCurDate()}`))
+        axios.delete(`${backendAddress}/todo/${item._id}`)
+        .then(() => axios.get(`${backendAddress}/todo/${getCurDate()}`))
         .then(res => {
             setTodoItems(res.data);
         });
