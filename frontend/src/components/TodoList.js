@@ -4,7 +4,7 @@ import { backendAddress, getCurDate } from './Helper';
 import TodoItem from './TodoItem';
 import './TodoList.css';
 
-function TodoList({todoItems, setTodoItems}) {
+function TodoList({todoItems, setTodoItems, setTodoChangeFlag}) {
     useEffect(() => {
         axios.get(`${backendAddress}/todo/all/${getCurDate()}`)
         .then(res => {
@@ -38,6 +38,7 @@ function TodoList({todoItems, setTodoItems}) {
         .then(() => axios.get(`${backendAddress}/todo/all/${getCurDate()}`))
         .then(res => {
             setTodoItems(res.data);
+            setTodoChangeFlag(true);
         });
     };
 
@@ -46,6 +47,7 @@ function TodoList({todoItems, setTodoItems}) {
         .then(() => axios.get(`${backendAddress}/todo/all/${getCurDate()}`))
         .then(res => {
             setTodoItems(res.data);
+            setTodoChangeFlag(true);
         });
     };
 
@@ -54,6 +56,7 @@ function TodoList({todoItems, setTodoItems}) {
         .then(() => axios.get(`${backendAddress}/todo/all/${getCurDate()}`))
         .then(res => {
             setTodoItems(res.data);
+            setTodoChangeFlag(true);
         });
     };
 

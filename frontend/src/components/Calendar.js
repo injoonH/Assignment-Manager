@@ -4,7 +4,7 @@ import { backendAddress, monthName } from './Helper';
 import CalendarItem from './CalendarItem';
 import './Calendar.css';
 
-function Calendar({setTodoItems}) {
+function Calendar({setTodoItems, todoChangeFlag, setTodoChangeFlag}) {
     const today = new Date();
     const [date, setDate] = useState(today.getDate());
     const [month, setMonth] = useState(today.getMonth());
@@ -44,6 +44,8 @@ function Calendar({setTodoItems}) {
     };
     
     const getDates = () => {
+        if (todoChangeFlag) setTodoChangeFlag(false);
+
         // console.log(`getDates(${year}, ${month})`);
         const prevInfo = getInfo(year, month);
         const curInfo = getInfo(year, month + 1);
