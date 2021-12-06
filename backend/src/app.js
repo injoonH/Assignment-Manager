@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import dotenv from 'dotenv';
 import todoRouter from './routes/todo.js';
 
 const app = express();
@@ -22,8 +23,10 @@ const corsOptions = {
 app.use(cors(corsOptions));
 // app.use(cors());
 
+dotenv.config();
+
 // mongoose.connect('mongodb://localhost:27017/todo', {
-mongoose.connect('mongodb://root:ehdgoanfrhkqorentksdlakfmrhekfgehfhr@ssal.sparcs.org:35000/todo?authSource=admin', {
+mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
