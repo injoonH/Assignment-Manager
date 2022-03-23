@@ -1,4 +1,4 @@
-export const backendAddress = 'http://ssal.sparcs.org:38000';
+export const backendAddress = 'http://localhost:8080'; // 'http://ssal.sparcs.org:38000';
 
 export const monthName = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
